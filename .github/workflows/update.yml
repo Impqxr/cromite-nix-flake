@@ -1,0 +1,26 @@
+name: Update the package
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 * * *"
+
+jobs:
+  update:
+    name: Update the package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6.0.1
+      - uses: DeterminateSystems/determinate-nix-action@main
+
+      - name: Configure Git Bot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run update script
+        run: ./update.sh
+
+      - name: Push changes
+        run: git push
