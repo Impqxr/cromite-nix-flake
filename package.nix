@@ -270,5 +270,18 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.updateScript = ./Utils/update.sh;
+  passthru.updateScript = ./update.sh;
+
+  meta = {
+    changelog = "https://github.com/uazo/cromite/releases";
+    description = "Bromite fork with ad blocking and privacy enhancements";
+    homepage = "https://github.com/uazo/cromite";
+    license = with lib.licenses; [
+      bsd3
+      gpl3Plus
+    ];
+    mainProgram = "cromite";
+    platforms = [ "x86_64-linux" ];
+    sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
+  };
 })
