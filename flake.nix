@@ -2,7 +2,7 @@
   description = "A Nix flake for the Cromite";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-compat = {
       url = "github:NixOS/flake-compat";
